@@ -3,7 +3,14 @@ require("dotenv").config();
 var cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = ['https://66e330ada4d2970ac888f9aa--nimble-strudel-e0c6fd.netlify.app/'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true
+}));
 
 const TaskRoutes = require("./Routes/NewTask");
 
